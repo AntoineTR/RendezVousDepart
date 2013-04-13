@@ -18,8 +18,8 @@ public class RendezVousDAL
     Dictionary<string, Object> dicParametres = new Dictionary<string, Object>();
     dicParametres.Add("@IDPatient", pPatientID);
     lesRDVS = AccesBD.Current.GetListObject<RendezVous>(
-        "Select d.NomDocteur, r.DateDebut, m.NomMedicament as NomMedicament FROM RendezVous r INNER JOIN Docteurs d ON r.IDDocteur = d.IDDocteur INNER JOIN MedicamentRendezVous mr ON mr.IDRendezVous = r.IDRendezVous JOIN Medicaments m ON m.IDMedicament = mr.IDMedicament  WHERE IDPatient = @IDPatient",
-        
+
+        "SELECT        RendezVous.DateDebut, Medicaments.NomMedicament as NomMedicament, Medicaments.Description, Docteurs.NomDocteur FROM RendezVous INNER JOIN MedicamentRendezVous ON RendezVous.IDRendezVous = MedicamentRendezVous.IDRendezVous INNER JOIN Medicaments ON MedicamentRendezVous.IDMedicament = Medicaments.IDMedicament INNER JOIN Docteurs ON RendezVous.IDDocteur = Docteurs.IDDocteur WHERE IDPatient = @IDPatient",
         dicParametres, CommandType.Text);
 
    

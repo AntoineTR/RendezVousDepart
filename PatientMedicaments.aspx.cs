@@ -12,8 +12,11 @@ public partial class PatientMedicaments : System.Web.UI.Page
         lblNumPatient.Text = Request.QueryString["IDPatient"];
         lblNom.Text = Request.QueryString["NomPatient"];
         lblPrenom.Text = Request.QueryString["PrenomPatient"];
-        int rdvID = int.Parse(Request.QueryString["IDPatient"]);
-        this.Repeater1.DataSource = RendezVousDAL.GetRDVbyID(rdvID);
-        this.Repeater1.DataBind();
+        if (Request.QueryString["IDPatient"] != null)
+        {
+            int rdvID = int.Parse(Request.QueryString["IDPatient"]);
+            this.Repeater1.DataSource = RendezVousDAL.GetRDVbyID(rdvID);
+            this.Repeater1.DataBind();
+        }
     }
 }
