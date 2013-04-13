@@ -1,0 +1,31 @@
+﻿<%--
+Modèle d'apparence par défaut. Les apparences sont fournies uniquement à titre d'exemple.
+
+1. Apparence de contrôle nommée. Le SkinId doit être défini de manière unique, car
+ un type de contrôle d’un même thème ne peut pas compter de SkinId dupliqués.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Apparence par défaut. Le SkinId n'est pas défini. Une seule apparence 
+de contrôle par défaut par type de contrôle est autorisée dans le même thème.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<asp:GridView runat="server"
+            AutoGenerateColumns="False"
+            AllowSorting="True" 
+            ForeColor="#333333" GridLines="None" >
+            <AlternatingRowStyle BackColor="White" />
+            <FooterStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#990000" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#FFCC66" ForeColor="#333333" HorizontalAlign="Center" />
+            <RowStyle BackColor="#FFFBD6" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#FFCC66" Font-Bold="True" ForeColor="Navy" />
+            <SortedAscendingCellStyle BackColor="#FDF5AC" />
+            <SortedAscendingHeaderStyle BackColor="#4D0000" />
+            <SortedDescendingCellStyle BackColor="#FCF6C0" />
+            <SortedDescendingHeaderStyle BackColor="#820000" />
+        </asp:GridView>
