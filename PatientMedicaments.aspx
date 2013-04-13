@@ -18,7 +18,33 @@
     </h1>
     
     <asp:Repeater ID="Repeater1" runat="server">
+    <HeaderTemplate> 
+         <table> 
+            <tr > 
+               <th align="left"> 
+                  Nom Docteur
+               </th>  
+               <th align="left"> 
+                  Date
+               </th> 
+               
+            </tr> 
+      </HeaderTemplate> 
+
+    <ItemTemplate> 
+            <tr> 
+               <td valign="top"> 
+                  <%# DataBinder.Eval(Container.DataItem, "NomDocteur") %> 
+               </td> 
+               <td valign="top"> 
+                  <%# DataBinder.Eval(Container.DataItem, "DateDebut") %> 
+               </td> 
+               <td valign="top"> 
+                  <%# DataBinder.Eval(Container.DataItem, "NomMedicament") %> 
+               </td> 
+             </tr>
+      </ItemTemplate> 
     </asp:Repeater>
     
-</asp:Content>
+    </asp:Content>
 
