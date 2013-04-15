@@ -21,7 +21,7 @@
    
 
     <ItemTemplate> 
-            <table class="tableRepeater"> 
+            <table class="tableRepeater" id="table" style="border : 2px solid black; margin : 10px; float : left"> 
             <tr > 
                <th align="left"> 
                   Nom Docteur
@@ -41,13 +41,13 @@
                
              </tr>
              <tr class="trMed">
-            <td colspan="2" class="tdMed">MEDICAMENTS <br /> 
+            <td class="tdMed">MEDICAMENTS <br /> 
             <!-- Repeater imbriqué MedicamentsRDV est une propriété de RendezVous--> 
             <asp:Repeater runat="server" ID="medicamentsRepeater" EnableViewState="false" DataSource='<%# DataBinder.Eval(Container.DataItem, "MedicamentsRDV") %>'>  
                 <ItemTemplate>
-                     <!-- à arranger en lien . le click sur le lien ouvre un OpenPopUp...javascript-->
-                     <a href='javascript:void(0)' onclick="OpenPopUp( <%# Eval("IDMedicament") %>);"><%# DataBinder.Eval(Container.DataItem, "NomMedicament")%></a>
-                     <br />
+                     <%# CheminMedicament(DataBinder.Eval(Container.DataItem, "NomMedicament"))%>
+<br /> 
+<%# DataBinder.Eval(Container.DataItem, "NomMedicament")%> 
                 </ItemTemplate>
             </asp:Repeater>
             </td>
