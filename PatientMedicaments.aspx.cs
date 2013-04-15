@@ -23,6 +23,6 @@ public partial class PatientMedicaments : System.Web.UI.Page
     public string CheminMedicament(object pID)
     {
         Medicament m = MedicamentDAL.getMedbyNAME(pID.ToString());
-        return "<a href='#' onclick='window.open(\"DetailsMedicament.aspx?ID=" + pID.ToString() + "\", \"info medicament\", \"width=200, height=150\")'>" + m.NomMedicament + "</a>";
+        return "<a href='#' onclick='window.open(\"DetailsMedicament.aspx?Name=" + pID.ToString() + "\", \"info medicament\", \"width=200, height=150\")'>" + m.NomMedicament + "</a>";
     }
 }

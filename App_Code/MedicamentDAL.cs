@@ -7,7 +7,7 @@ using System.Data;
 /// <summary>
 /// Description résumée de MedicamentDAL
 /// </summary>
-public class MedicamentDAL
+public class MedicamentDAL : Medicament
 {
 	public MedicamentDAL()
 	{
