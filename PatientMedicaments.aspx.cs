@@ -18,5 +18,11 @@ public partial class PatientMedicaments : System.Web.UI.Page
             this.Repeater1.DataSource = RendezVousDAL.GetRDVbyID(rdvID);
             this.Repeater1.DataBind();
         }
+
     }
+    //public string CalculerCheminMedicament(object pID)
+    //{
+    //    Medicament m = MedicamentDAL.getMedicamentByID((int)pID);
+    //    return "<a href='#' onclick='window.open(\"DetailsMedicament.aspx?ID=" + pID.ToString() + "\", \"info medicament\", \"width=200, height=150\")'>" + m.NomMedicament + "</a>";
+    //}
 }

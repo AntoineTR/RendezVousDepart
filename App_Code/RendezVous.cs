@@ -63,7 +63,22 @@ public class RendezVous
     }
 
     //Ajouter une propriétés en lazy load pour obtenir la liste des médicaments préscrits lors d'un rendez-vous
-   
+    private List<Medicament> MedRDV;
+    public List<Medicament> MedicamentsRDV
+    {
+        get
+        {
+            if (MedRDV == null)
+                MedRDV = MedicamentDAL.GetMedByRDV(IDRendezVous);
+
+            return MedRDV;
+        }
+        set
+        {
+            MedRDV = value;
+        }
+    }
+
 
    
 #endregion

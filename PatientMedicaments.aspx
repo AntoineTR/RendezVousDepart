@@ -40,30 +40,20 @@
                </td> 
                
              </tr>
-             <tr><td><h1>Médicaments:</h1>
-              <asp:Repeater runat="server" ID="medRepeater" EnableViewState="false" 
-                 DataSource='<%# DataBinder.Eval(Container.DataItem, "Medicaments") %>' > 
-                    
-                    <ItemTemplate> 
-                                         
-                        
-                        
-                         <%# DataBinder.Eval(Container.DataItem, "NomMedicament") %> -<asp:HyperLink ID="HyperLink1" NavigateUrl='<%# "~/page1.aspx?id=" + Eval("OrderID") %>' runat="server">  <%# DataBinder.Eval(Container.DataItem, "OrderName") %></asp:HyperLink>
-                        - <%# DataBinder.Eval(Container.DataItem, "Description")%> $
-                        
-                        
-                        
-                     
-                    </ItemTemplate> 
-                 
+             <tr class="trMed">
+            <td colspan="2" class="tdMed">MEDICAMENTS <br /> 
+            <!-- Repeater imbriqué MedicamentsRDV est une propriété de RendezVous--> 
+            <asp:Repeater runat="server" ID="medicamentsRepeater" EnableViewState="false" DataSource='<%# DataBinder.Eval(Container.DataItem, "MedicamentsRDV") %>'>  
+                <ItemTemplate>
+                     <!-- à arranger en lien . le click sur le lien ouvre un OpenPopUp...javascript-->
+                     <a href='javascript:void(0)' onclick="OpenPopUp( <%# Eval("IDMedicament") %>);"><%# DataBinder.Eval(Container.DataItem, "NomMedicament")%></a>
+                     <br />
+                </ItemTemplate>
+            </asp:Repeater>
+            </td>
+        </tr>
 
-
-                </asp:Repeater> 
-           
              
-             </td>
-             
-             </tr>
              </table>
       </ItemTemplate> 
     </asp:Repeater>
