@@ -30,12 +30,13 @@
     </p>
     <p>
         <asp:GridView ID="grd_Doc" runat="server" AutoGenerateColumns="False" 
-             style="margin-right: 1px">
+             style="margin-right: 1px" onrowdatabound="grd_Doc_RowDataBound" 
+            onrowediting="grd_Doc_RowEditing" onrowupdating="grd_Doc_RowUpdating">
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:TemplateField HeaderText="Nom">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("NomDocteur") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtNomDoc" runat="server" Text='<%# Bind("NomDocteur") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label1" runat="server" Text='<%# Bind("NomDocteur") %>'></asp:Label>
@@ -43,7 +44,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="PréNom">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("PrenomDocteur") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtPrenomDoc" runat="server" Text='<%# Bind("PrenomDocteur") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("PrenomDocteur") %>'></asp:Label>
@@ -51,7 +52,8 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Specialiste">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("IDSpecialite") %>'></asp:TextBox>
+                    <asp:DropDownList ID="ddlSpecDoc" runat="server" AutoPostBack="true"></asp:DropDownList>
+                        
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label3" runat="server" Text='<%# GetSpec((int)Eval("IDSpecialite")) %>'></asp:Label>
@@ -59,7 +61,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Téléphone">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtt" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label4" runat="server" Text='<%# Bind("Telephone") %>'></asp:Label>
@@ -67,7 +69,7 @@
                 </asp:TemplateField>
                 <asp:TemplateField HeaderText="Cellulaire">
                     <EditItemTemplate>
-                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Cellulaire") %>'></asp:TextBox>
+                        <asp:TextBox ID="txtc" runat="server" Text='<%# Bind("Cellulaire") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <ItemTemplate>
                         <asp:Label ID="Label5" runat="server" Text='<%# Bind("Cellulaire") %>'></asp:Label>

@@ -38,4 +38,53 @@ public partial class Docteurs : System.Web.UI.Page
     {
 
     }
+    protected void grd_Doc_RowDataBound(object sender, GridViewRowEventArgs e)
+    {
+        if (grd_Doc.DataSource != null)
+        {
+            
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                
+                if ((e.Row.RowState & DataControlRowState.Edit) > 0)
+                {
+                    DropDownList ddlSpec = (DropDownList)(e.Row.FindControl("ddlSpecDoc"));
+                    ddlSpec.DataSource = SpecialiteDAL.GetAllSpec();
+                    ddlSpec.DataTextField = "NomSpecialite";
+                    ddlSpec.DataValueField = "IDSpecialite";
+                    ddlSpec.DataBind();
+                    ddlSpec.SelectedValue = ((Docteur)e.Row.DataItem).IDSpecialite.ToString();
+
+                }
+            }
+        }
+    }
+    protected void grd_Doc_RowEditing(object sender, GridViewEditEventArgs e)
+    {
+        grd_Doc.EditIndex = e.NewEditIndex;
+        lstDoc = docteurDAL.GetAllDoc();
+        grd_Doc.DataBind();
+    }
+    protected void grd_Doc_RowUpdating(object sender, GridViewUpdateEventArgs e)
+    {
+        int ID = int.Parse(grd_Doc.DataKeys[e.RowIndex].Value.ToString());
+        string nomDoc = ((TextBox)(grd_Doc.Rows[grd_Doc.EditIndex].FindControl("txtNomDoc"))).Text;
+        string prenomDoc = ((TextBox)(grd_Doc.Rows[grd_Doc.EditIndex].FindControl("txtPrenomDoc"))).Text;
+        int specialite = int.Parse(((DropDownList)(grd_Doc.Rows[e.RowIndex].FindControl("ddlSpecDoc"))).SelectedValue);
+        string txtt = ((TextBox)(grd_Doc.Rows[grd_Doc.EditIndex].FindControl("txtt"))).Text;
+        string txtc = ((TextBox)(grd_Doc.Rows[grd_Doc.EditIndex].FindControl("txtc"))).Text;
+       
+        Docteur d = new Docteur();
+        d.IDDocteur = ID;
+        d.NomDocteur = nomDoc;
+        d.PrenomDocteur = prenomDoc;
+        d.IDSpecialite = specialite;
+        d.Telephone = txtt;
+        d.Cellulaire = txtc;
+        int temp = docteurDAL.Update(d);
+        lstDoc = docteurDAL.GetAllDoc();
+        grd_Doc.EditIndex = -1;
+        grd_Doc.DataBind();
+         
+    }
 }
