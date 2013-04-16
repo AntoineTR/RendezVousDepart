@@ -17,7 +17,9 @@
     </p>
     <p>
         <asp:Label ID="lblPrenom" runat="server" Text="Prenom">Spécialité:</asp:Label>
-        <asp:DropDownList ID="DropDownList1" runat="server">
+        <asp:DropDownList ID="ddl_Spec" runat="server">
+            <asp:ListItem Selected="True"></asp:ListItem>
+            
         </asp:DropDownList>
     </p>
     <p>
@@ -27,24 +29,51 @@
             Text="Effacer" style="margin-left: 54px" Width="75px" Height="26px" />
     </p>
     <p>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+        <asp:GridView ID="grd_Doc" runat="server" AutoGenerateColumns="False" 
              style="margin-right: 1px">
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
-                <asp:BoundField DataField="NomDocteur" HeaderText="Nom" />
-                <asp:BoundField DataField="PrenomDocteur" HeaderText="PréNom" />
-                <asp:BoundField DataField="NomSpecialite" HeaderText="Specialiste" />
-                <asp:BoundField DataField="Telephone" HeaderText="Téléphone" />
-                <asp:BoundField DataField="Cellulaire" HeaderText="Cellulaire" />
-
-                
-                
-                
-                <asp:TemplateField>
-                <ItemTemplate> <a href='<%# "PatientMedicaments.aspx?IDPatient=" + Eval("IDPatient") + 
-                "&&NomPatient=" + Eval("NomPatient") +"&&PrenomPatient=" + Eval("PrenomPatient")
-                 %>' >Les Prescriptions</a></ItemTemplate>
+                <asp:TemplateField HeaderText="Nom">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("NomDocteur") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" Text='<%# Bind("NomDocteur") %>'></asp:Label>
+                    </ItemTemplate>
                 </asp:TemplateField>
+                <asp:TemplateField HeaderText="PréNom">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("PrenomDocteur") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label2" runat="server" Text='<%# Bind("PrenomDocteur") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Specialiste">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" Text='<%# Bind("IDSpecialite") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" Text='<%# GetSpec((int)Eval("IDSpecialite")) %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Téléphone">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox4" runat="server" Text='<%# Bind("Telephone") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label4" runat="server" Text='<%# Bind("Telephone") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+                <asp:TemplateField HeaderText="Cellulaire">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox5" runat="server" Text='<%# Bind("Cellulaire") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label5" runat="server" Text='<%# Bind("Cellulaire") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
+
                 
                 
                 

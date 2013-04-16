@@ -16,6 +16,9 @@ public class docteurDAL : Docteur
 		//
 	}
     public static List<Docteur> GetAllDoc() {
-        return AccesBD.Current.GetListObject<Docteur>("Select * from Docteurs", null, CommandType.Text);
+        return AccesBD.Current.GetListObject<Docteur>("SELECT * " +
+                     "FROM Docteurs d " +
+                     "ORDER BY d.NomDocteur, d.PrenomDocteur"
+            , null, CommandType.Text);
     }
 }
