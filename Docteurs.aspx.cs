@@ -67,13 +67,14 @@ public partial class Docteurs : System.Web.UI.Page
     }
     protected void grd_Doc_RowUpdating(object sender, GridViewUpdateEventArgs e)
     {
+        //NEMARCHEPAS
         int ID = int.Parse(grd_Doc.DataKeys[e.RowIndex].Value.ToString());
-        string nomDoc = ((TextBox)(grd_Doc.Rows[grd_Doc.EditIndex].FindControl("txtNomDoc"))).Text;
+        string nomDoc = ((TextBox)(grd_Doc.Rows[grd_Doc.EditIndex].Cells[0].FindControl("txtNomDoc"))).Text;
         string prenomDoc = ((TextBox)(grd_Doc.Rows[grd_Doc.EditIndex].FindControl("txtPrenomDoc"))).Text;
         int specialite = int.Parse(((DropDownList)(grd_Doc.Rows[e.RowIndex].FindControl("ddlSpecDoc"))).SelectedValue);
         string txtt = ((TextBox)(grd_Doc.Rows[grd_Doc.EditIndex].FindControl("txtt"))).Text;
         string txtc = ((TextBox)(grd_Doc.Rows[grd_Doc.EditIndex].FindControl("txtc"))).Text;
-       
+        
         Docteur d = new Docteur();
         d.IDDocteur = ID;
         d.NomDocteur = nomDoc;

@@ -32,4 +32,21 @@ public class RendezVousDAL
     {
         return AccesBD.Current.GetListObject<RendezVous>("SELECT Docteurs.NomDocteur, RendezVous.* FROM            RendezVous INNER JOIN Docteurs ON RendezVous.IDDocteur = Docteurs.IDDocteur Where IDPatient = " + pID, null, System.Data.CommandType.Text);
     }
+    public static List<RendezVous> Getrdvandname(DateTime dt)
+    {
+        Dictionary<string, Object> par = new Dictionary<string, Object>();
+        par.Add("@DateDebut", dt);
+
+        return AccesBD.Current.GetListObject<RendezVous>( "SELECT * FROM RendezVous r INNER JOIN Docteurs d ON r.IDDocteur = d.IDDocteur WHERE YEAR(DateDebut)=YEAR(@DateDebut) AND MONTH(DateDebut)=MONTH(@DateDebut) AND DAY(DateDebut)=DAY(@DateDebut) ORDER BY r.DateDebut"
+            , par, CommandType.Text);
+    }
+    public static List<RendezVous> GetRDVbyDate(DateTime dt)
+    {
+        
+
+        Dictionary<string, Object> par = new Dictionary<string, Object>();
+        par.Add("@DateDebut", dt);
+
+        return AccesBD.Current.GetListObject<RendezVous>("SELECT * FROM RendezVous WHERE YEAR(DateDebut)=YEAR(@DateDebut) AND MONTH(DateDebut)=MONTH(@DateDebut) AND DAY(DateDebut)=DAY(@DateDebut) ORDER BY DateDebut", par, CommandType.Text);
+    }
 }
