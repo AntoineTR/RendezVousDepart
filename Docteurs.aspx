@@ -31,7 +31,8 @@
     <p>
         <asp:GridView ID="grd_Doc" runat="server" AutoGenerateColumns="False" 
              style="margin-right: 1px" onrowdatabound="grd_Doc_RowDataBound" 
-            onrowediting="grd_Doc_RowEditing" onrowupdating="grd_Doc_RowUpdating">
+            onrowediting="grd_Doc_RowEditing" onrowupdating="grd_Doc_RowUpdating" 
+            DataKeyNames="IDDocteur">
             <Columns>
                 <asp:CommandField ShowEditButton="True" />
                 <asp:TemplateField HeaderText="Nom">
